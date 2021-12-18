@@ -2,10 +2,10 @@ import {Apis} from "bitsharesjs-ws";
 import {TransactionBuilder, PrivateKey} from "../lib";
 import {asset} from "../lib/serializer/src/operations";
 
-const wifKey = "5KBuq5WmHvgePmB7w3onYsqLM8ESomM2Ae7SigYuuwg8MDHW7NN";
+const wifKey = "5KNP4D9K3FL1gBtRtanhfgLZTpz1wcJVsLEQXonRMeAwzMDL2se";
 const pKey = PrivateKey.fromWif(wifKey);
 
-Apis.instance("wss://node.testnet.bitshares.eu", true).init_promise.then(
+Apis.instance("ws://localhost:30201", true).init_promise.then(
     res => {
         console.log("connected to:", res[0].network_name, "network");
 
@@ -15,7 +15,7 @@ Apis.instance("wss://node.testnet.bitshares.eu", true).init_promise.then(
                 amount: 0,
                 asset_id: "1.3.0"
             },
-            account: "1.2.680",
+            account: "1.2.27",
             target_type: 1,
             amount: {
                 amount: 1,

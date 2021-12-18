@@ -1,16 +1,16 @@
 import {Apis} from "bitsharesjs-ws";
 import {ChainStore, FetchChain, PrivateKey, TransactionHelper, Aes, TransactionBuilder} from "../lib";
 
-var witness_node = "wss://node.testnet.bitshares.eu"
+var witness_node = "ws://localhost:30201"
 var nobroadcast = false
 var amount_to_send = 10000
-var asset_to_send = "TEST"
-var from_account = "bob"
-var to_account = "alice"
+var asset_to_send = "BTS"
+var from_account = "admin"
+var to_account = "demo-user-1"
 var memo_text = "Your memo goes in here.."
 
-let pKeyActive = PrivateKey.fromWif("5KBuq5WmHvgePmB7w3onYsqLM8ESomM2Ae7SigYuuwg8MDHW7NN");  // Replace with your own Active Private Key
-let pKeyMemo = PrivateKey.fromWif("5KBuq5WmHvgePmB7w3onYsqLM8ESomM2Ae7SigYuuwg8MDHW7NN");  // Replace with your own Memo Private Key
+let pKeyActive = PrivateKey.fromWif("5KNP4D9K3FL1gBtRtanhfgLZTpz1wcJVsLEQXonRMeAwzMDL2se");  // Replace with your own Active Private Key
+let pKeyMemo = PrivateKey.fromWif("5KNP4D9K3FL1gBtRtanhfgLZTpz1wcJVsLEQXonRMeAwzMDL2se");  // Replace with your own Memo Private Key
 
 Apis.instance(witness_node, true).init_promise.then(res => {
    console.log("connected to:", res[0].network);
@@ -35,7 +35,7 @@ Apis.instance(witness_node, true).init_promise.then(res => {
                 FetchChain("getAsset", sendAmount.asset),
                 FetchChain("getAsset", sendAmount.asset)
             ]).then((res)=> {
-                // console.log("got data:", res);
+                console.log("got data:", res);
                 let [fromAccount, toAccount, memoSender, sendAsset, feeAsset] = res;
 
                 // Memos are optional, but if you have one you need to encrypt it here
